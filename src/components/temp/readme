@@ -1,0 +1,2 @@
+Render props pattern, why use?
+Use whenever you wanna share input state without importing the compinent inside the input component. Remember, the input component should only manage input state, nothing more.
