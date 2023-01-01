@@ -6,7 +6,7 @@ const withUser = (Component) => {
     const [users, setUser] = useState([]);
     const getUser = async () => {
       try {
-        const data = await axios.get('http://localhost:3000/users');
+        const data = await axios.get('http://localhost:3004/users');
         setUser(data.data);
       } catch (error) {
         console.error(error);

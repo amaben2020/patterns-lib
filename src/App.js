@@ -1,4 +1,6 @@
 import './App.css';
+import Card from './components/card/default';
+import Skeleton from './components/card/skeleton';
 import DogImages from './components/DogImages';
 import Input from './components/Input';
 import Celcuius from './components/temp/Celcuius';
@@ -19,6 +21,8 @@ function App() {
             </>
           )}
         />
+        <Skeleton />
+        <Card />
       </>
     </div>
   );

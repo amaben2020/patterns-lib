@@ -16,3 +16,5 @@ const Input = ({ render }) => {
 };
 
 export default Input;
+
+//Usage: an alternative for creating custom hooks
