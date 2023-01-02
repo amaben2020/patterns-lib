@@ -1,0 +1,5 @@
+Render props pattern, why use?
+
+Render Props simply uses another component to render its logic. The function is then invoked in the Component i.e input with logic.
+
+Use whenever you wanna share input state without importing the component inside the input component. Remember, the input component should only manage input state, nothing more.
