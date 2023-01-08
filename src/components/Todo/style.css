@@ -1,0 +1,13 @@
+.wrapper {
+  display: flex;
+  cursor: pointer;
+  padding: 5px;
+  flex-direction: column;
+  margin: 10px auto;
+  border: 1px solid red;
+  max-width: 250px;
+}
+.wrapper[data-variant='completed'] {
+  text-decoration: line-through;
+  color: green;
+}

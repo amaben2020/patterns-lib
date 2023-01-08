@@ -9,13 +9,13 @@ export const todoReducer = (state, action) => {
             return {
               id: todo.id,
               item: todo.item,
-              status: todo.completed ? 'Completed' : 'In Progress',
+              status: todo.completed ? 'In Progress' : 'Completed',
+              //if it was previously false, make it true
               completed: !todo.completed,
             };
           } else {
             return {
               ...todo,
-              completed: !todo.completed,
             };
           }
         }),
