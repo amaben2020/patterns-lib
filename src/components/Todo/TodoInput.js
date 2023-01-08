@@ -18,7 +18,7 @@ const TodoInput = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch({ type: 'ADD_TODO', payload: data });
+    dispatch({ type: 'ADD_TODO', payload: { id: Math.random(), ...data } });
   };
 
   return (

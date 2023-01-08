@@ -10,17 +10,25 @@ const Todos = () => {
     <div style={{ padding: '150px' }}>
       <TodoInput />
       {state.todos.map((todo) => (
-        <div
-          onClick={() => {
-            dispatch({ type: 'TOGGLE_COMPLETE', payload: todo.id });
-          }}
-          key={todo.id}
-        >
-          <TodoItem
-            item={todo.item}
-            status={todo.status}
-            completed={todo.completed}
-          />
+        <div key={todo.id}>
+          <>
+            <TodoItem
+              item={todo.item}
+              status={todo.status}
+              completed={todo.completed}
+              onClick={() =>
+                dispatch({ type: 'TOGGLE_COMPLETE', payload: todo.id })
+              }
+            />
+
+            <button
+              onClick={() =>
+                dispatch({ type: 'TOGGLE_DELETE', payload: todo.id })
+              }
+            >
+              Delete
+            </button>
+          </>
         </div>
       ))}
     </div>
