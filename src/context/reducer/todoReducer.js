@@ -28,6 +28,12 @@ export const todoReducer = (state, action) => {
         todo: state.todos.filter((todo) => todo.id !== action.payload.id),
       };
 
+    case 'ADD_TODO':
+      return {
+        ...state,
+        todos: [...state.todos, action.payload],
+      };
+
     default:
       throw new Error('Unknown action');
   }

@@ -1,5 +1,6 @@
 import React from 'react';
 import useCtx from './hooks/useCtx';
+import TodoInput from './TodoInput';
 import TodoItem from './TodoItem';
 
 const Todos = () => {
@@ -7,6 +8,7 @@ const Todos = () => {
 
   return (
     <div style={{ padding: '150px' }}>
+      <TodoInput />
       {state.todos.map((todo) => (
         <div
           onClick={() => {
