@@ -3,18 +3,19 @@ export const todoReducer = (state, action) => {
     case 'TOGGLE_COMPLETE':
       return {
         ...state,
-        selected: state.todos.find((todo) => todo.id === action.payload.id),
-        todo: state.todos.map((todo) => {
+        selected: state.todos[Number(action.payload - 1)],
+        todos: state.todos.map((todo) => {
           if (todo.id === action.payload) {
             return {
               id: todo.id,
               item: todo.item,
-              status: 'Completed',
-              completed: true,
+              status: todo.completed ? 'Completed' : 'In Progress',
+              completed: !todo.completed,
             };
           } else {
             return {
               ...todo,
+              completed: !todo.completed,
             };
           }
         }),
