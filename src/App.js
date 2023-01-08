@@ -7,6 +7,9 @@ import LoginUser from './components/login-user/index.jsx';
 import Celcuius from './renderProps/temp/Celcuius';
 import Fahreinheit from './renderProps/temp/Fahreinheit';
 import User from './components/User';
+import TodoState from './context/TodoState';
+import TodoItem from './components/Todo/TodoItem';
+import Todos from './components/Todo/Todos';
 
 function App() {
   return (
@@ -25,6 +28,10 @@ function App() {
         <Skeleton />
         <Card />
         <LoginUser />
+
+        <TodoState>
+          <Todos />
+        </TodoState>
       </>
     </div>
   );

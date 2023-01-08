@@ -18,3 +18,8 @@ const Input = ({ render }) => {
 export default Input;
 
 //Usage: an alternative for creating custom hooks
+//It promotes the SOLID Single Responsibility which means that the Input component should only be used to grab input and another component will be used to render the value.
+
+//That component could be reused.
+
+//The result of invoking the render function is html

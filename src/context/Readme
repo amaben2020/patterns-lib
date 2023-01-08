@@ -1,0 +1,5 @@
+Build a TODO app, it cancels the completed one and styles it red while completed is green, X button deletes, Add button adds to the array, clicking on any todo item makes it completed i.e green with strike
+
+use context
+
+create an object 
