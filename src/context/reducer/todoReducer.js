@@ -1,9 +1,30 @@
 export const todoReducer = (state, action) => {
   switch (action.type) {
+    case 'ADD_TODO':
+      return {
+        ...state,
+        todos: [...state.todos, action.payload],
+      };
+
+    case 'EDIT_TODO':
+      const { text, id } = action.payload;
+
+      return {
+        ...state,
+        todos: state.todos.map((todo) => {
+          if (todo.id === String(id)) {
+            return {
+              ...todo,
+              item: text,
+            };
+          }
+          return todo;
+        }),
+      };
+
     case 'TOGGLE_COMPLETE':
       return {
         ...state,
-        selected: state.todos[Number(action.payload - 1)],
         todos: state.todos.map((todo) => {
           if (todo.id === action.payload) {
             return {
@@ -27,10 +48,10 @@ export const todoReducer = (state, action) => {
         todos: state.todos.filter((todo) => todo.id !== action.payload),
       };
 
-    case 'ADD_TODO':
+    case 'TOGGLE_EDIT':
       return {
         ...state,
-        todos: [...state.todos, action.payload],
+        selected: state.todos[Number(action.payload - 1)],
       };
 
     default:
