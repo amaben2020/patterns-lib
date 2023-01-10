@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import useCtx from './hooks/useCtx';
 
 const TodoInput = ({ showEdit, setShowEdit }) => {
-  const { state, selected, dispatch } = useCtx();
+  const { state, dispatch } = useCtx();
 
   const [data, setState] = useState({
     item: '',
@@ -21,7 +21,7 @@ const TodoInput = ({ showEdit, setShowEdit }) => {
 
     dispatch({
       type: 'EDIT_TODO',
-      payload: { text: updatedTodoTitle, id: state.selected.id },
+      payload: { text: updatedTodoTitle, id: state?.selected.id },
     });
 
     setShowEdit(false);
@@ -39,7 +39,10 @@ const TodoInput = ({ showEdit, setShowEdit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch({ type: 'ADD_TODO', payload: { id: Math.random(), ...data } });
+    dispatch({
+      type: 'ADD_TODO',
+      payload: { id: String(state.todos.length + 1), ...data },
+    });
   };
 
   return showEdit ? (
@@ -48,15 +51,14 @@ const TodoInput = ({ showEdit, setShowEdit }) => {
         onChange={handleUpdateChange}
         name='updatedItem'
         value={updatedTodoTitle}
-        placeholder='Edit Todo'
+        placeholder={state?.selected?.item}
       />
-      <input
+      <input onChange={handleChange} name='completed' type='checkbox' />
+      <select
         onChange={handleChange}
-        name='completed'
-        type='checkbox'
-        placeholder='Edit Todo'
-      />
-      <select onChange={handleChange} name='status'>
+        name='status'
+        placeholder={state?.selected?.status}
+      >
         <option value='In Progress'>In Progress</option>
         <option value='Completed'>Completed</option>
       </select>

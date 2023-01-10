@@ -26,7 +26,7 @@ function App() {
           )}
         />
         <Skeleton />
-        <Card />
+        <Card name='Dog' />
         <LoginUser />
 
         <TodoState>

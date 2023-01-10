@@ -17,9 +17,9 @@ const Todos = () => {
               item={todo.item}
               status={todo.status}
               completed={todo.completed}
-              onClick={() =>
-                dispatch({ type: 'TOGGLE_COMPLETE', payload: todo.id })
-              }
+              onClick={() => {
+                dispatch({ type: 'TOGGLE_COMPLETE', payload: todo.id });
+              }}
             />
 
             <button

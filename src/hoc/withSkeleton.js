@@ -28,3 +28,5 @@ const withSkeleton = (Component, url) => {
 };
 
 export default withSkeleton;
+
+// whenever you see a complex function, just look at its return

@@ -2,7 +2,7 @@ import React from 'react';
 import withSkeleton from '../../../hoc/withSkeleton';
 import './style.css';
 
-const Card = ({ data }) => {
+const Card = ({ data, name }) => {
   return (
     <div className='card'>
       <div>
@@ -15,6 +15,8 @@ const Card = ({ data }) => {
         <h2 className='card-title'>{data?.name} </h2>
         <p className='card-description'>
           <span>{data?.email}</span>
+
+          <h1>{name}</h1>
         </p>
         <ul className='card-skills'>
           <li className='skill'>{data?.mobile}</li>
