@@ -67,7 +67,12 @@ const TodoInput = ({ showEdit, setShowEdit }) => {
     </form>
   ) : (
     <form onSubmit={handleSubmit}>
-      <input onChange={handleChange} name='item' value={data.item} />
+      <input
+        onChange={handleChange}
+        placeholder='Item Name'
+        name='item'
+        value={data.item}
+      />
       <input onChange={handleChange} name='completed' type='checkbox' />
       <select onChange={handleChange} name='status'>
         <option value='In Progress'>In Progress</option>
