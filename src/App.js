@@ -1,22 +1,21 @@
-import './App.css';
-import Card from './components/card/default';
-import Skeleton from './components/card/skeleton';
-import DogImages from './components/DogImages';
-import Input from './renderProps/Input';
-import LoginUser from './components/login-user/index.jsx';
-import Celcuius from './renderProps/temp/Celcuius';
-import Fahreinheit from './renderProps/temp/Fahreinheit';
-import User from './components/User';
-import TodoState from './context/TodoState';
-import TodoItem from './components/Todo/TodoItem';
-import Todos from './components/Todo/Todos';
+import "./App.css";
+import useFilters from "./components/Todo/hooks/useFilters";
+import useProducts from "./components/Todo/hooks/useProducts";
+import Update from "./components/update-form-logic/Update";
 
 function App() {
+  const URL = "http://localhost:3004/products";
+  const { products } = useProducts(URL);
+  const { handleFilterProductsByShipment, handleFilter } = useFilters();
+
+  // const { value, setValue } = useLocalStorage("me", { name: "Amaben" });
+  // console.log(value);
   return (
-    <div className='App'>
+    <div className="App">
       <>
-        <DogImages />
-        <User name='Amala' />
+        OK
+        {/* <DogImages />
+        <User name="Amala" />
         <Input
           render={(data) => (
             <>
@@ -26,12 +25,44 @@ function App() {
           )}
         />
         <Skeleton />
-        <Card name='Dog' />
+        <Card name="Dog" />
         <LoginUser />
 
         <TodoState>
           <Todos />
-        </TodoState>
+        </TodoState> */}
+        {/* <div>PRODUCTS Hook:</div>
+        <ul>
+          <div>
+            <button onClick={() => handleFilter("true")}>Is Shippable</button>
+            <button onClick={() => handleFilter("false")}>Not Shippable</button>
+          </div>
+          {handleFilterProductsByShipment(products)?.map((product) => (
+            <li>{product.name}</li>
+          ))}
+        </ul>
+
+        <div>
+          REFS:
+          <StoringState />
+        </div>
+
+        <div>
+          VOTER:
+          <Voting />
+        </div> */}
+        {/* <div>
+          Function as props
+          <ShowRender />
+        </div> */}
+        <div>
+          Value:
+          {/* <button onClick={() => setValue({ name: "Amaben" })}>
+            Set Value
+          </button> */}
+          {/* {value?.name} */}
+        </div>
+        <Update />
       </>
     </div>
   );

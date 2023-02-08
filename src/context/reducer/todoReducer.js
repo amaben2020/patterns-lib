@@ -8,7 +8,6 @@ export const todoReducer = (state, action) => {
 
     case 'EDIT_TODO':
       const { text, id } = action.payload;
-
       return {
         ...state,
         todos: state.todos.map((todo) => {
