@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import "./style.css";
+import Form from "./Form";
 
-const Update = () => {
+const FormWithLogic = () => {
   const [user, setUser] = useState({});
   const [error, setError] = useState(false);
   const [isFocus, setIsFocus] = useState(false);
@@ -82,53 +82,19 @@ const Update = () => {
   }, []);
 
   return (
-    <div className="wrapper">
-      <h2>Update Form</h2>
-
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder={user.name}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="email"
-          placeholder={user.email}
-          onChange={handleChange}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          style={{
-            border: error ? "2px solid red" : "2px solid green",
-          }}
-        />
-
-        {isFocus && "Yeah"}
-
-        <input
-          type="number"
-          name="mobile"
-          placeholder={user.mobile}
-          onChange={handleChange}
-        />
-
-        <select
-          onChange={handleChange}
-          name="policy"
-          style={{ margin: "10px", padding: "10px" }}
-          placeholder={String(user.policy)}
-        >
-          <option value="true">True</option>
-          <option value="false">False</option>
-        </select>
-
-        <button type="submit"> Submit</button>
-      </form>
-
-      {user.email}
+    <div>
+      FormWithLogic
+      <Form
+        handleSubmit={handleSubmit}
+        handleFocus={handleFocus}
+        handleBlur={handleBlur}
+        handleChange={handleChange}
+        user={user}
+        isError={error}
+        isFocus={isFocus}
+      />
     </div>
   );
 };
 
-export default Update;
+export default FormWithLogic;

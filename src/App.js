@@ -1,7 +1,7 @@
 import "./App.css";
 import useFilters from "./components/Todo/hooks/useFilters";
 import useProducts from "./components/Todo/hooks/useProducts";
-import Update from "./components/update-form-logic/Update";
+import FormWithLogic from "./components/update-form-logic/FormWithLogic";
 
 function App() {
   const URL = "http://localhost:3004/products";
@@ -62,7 +62,7 @@ function App() {
           </button> */}
           {/* {value?.name} */}
         </div>
-        <Update />
+        <FormWithLogic />
       </>
     </div>
   );
