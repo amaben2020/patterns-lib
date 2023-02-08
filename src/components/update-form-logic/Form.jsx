@@ -9,6 +9,8 @@ const Form = ({
   user,
   isError,
   isFocus,
+  blurHandler,
+  isValid,
 }) => {
   return (
     <div className="wrapper">
@@ -19,8 +21,13 @@ const Form = ({
           type="text"
           name="name"
           placeholder={user.name}
+          onBlur={blurHandler}
           onChange={handleChange}
+          style={{
+            border: !isValid ? "2px solid red" : "2px solid green",
+          }}
         />
+
         <input
           type="text"
           name="email"

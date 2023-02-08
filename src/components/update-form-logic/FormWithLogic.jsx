@@ -6,6 +6,9 @@ const FormWithLogic = () => {
   const [user, setUser] = useState({});
   const [error, setError] = useState(false);
   const [isFocus, setIsFocus] = useState(false);
+  const [isValid, setIsValid] = useState(false);
+
+  const [isBlur, setIsBlur] = useState(false);
 
   const [input, setInput] = useState({
     email: "",
@@ -81,9 +84,22 @@ const FormWithLogic = () => {
     fetchUser("x36n6kr");
   }, []);
 
+  // Handling input onBlur event
+  const blurHandler = (event) => {
+    setIsFocus(false);
+    setIsBlur(true);
+
+    // Validate entered name
+    if (input.name.match(/^[a-z][a-z\s]*$/i)) {
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
+  };
+
   return (
     <div>
-      FormWithLogic
+      Form With Logic
       <Form
         handleSubmit={handleSubmit}
         handleFocus={handleFocus}
@@ -92,6 +108,9 @@ const FormWithLogic = () => {
         user={user}
         isError={error}
         isFocus={isFocus}
+        blurHandler={blurHandler}
+        isBlur={isBlur}
+        isValid={isValid}
       />
     </div>
   );
