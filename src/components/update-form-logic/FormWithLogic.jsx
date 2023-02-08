@@ -97,10 +97,15 @@ const FormWithLogic = () => {
     }
   };
 
+  const handleCreate = () => {
+    try {
+    } catch (error) {}
+  };
   return (
     <div>
-      Form With Logic
+      Form With Logic Create/Update
       <Form
+        mode="update"
         handleSubmit={handleSubmit}
         handleFocus={handleFocus}
         handleBlur={handleBlur}
@@ -111,6 +116,20 @@ const FormWithLogic = () => {
         blurHandler={blurHandler}
         isBlur={isBlur}
         isValid={isValid}
+      />
+      <Form
+        mode="create"
+        handleSubmit={handleSubmit}
+        handleFocus={handleFocus}
+        handleBlur={handleBlur}
+        handleChange={handleChange}
+        user={user}
+        isError={error}
+        isFocus={isFocus}
+        blurHandler={blurHandler}
+        isBlur={isBlur}
+        isValid={isValid}
+        handleCreate={handleCreate}
       />
     </div>
   );
