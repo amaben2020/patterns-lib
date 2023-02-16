@@ -69,6 +69,8 @@ const FormWithLogic = () => {
 
   const handleChange = (e) => {
     setInput((p) => {
+      console.log("PREV", p);
+
       return { ...p, [e.target.name]: e.target.value };
     });
   };

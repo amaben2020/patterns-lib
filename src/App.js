@@ -1,7 +1,11 @@
+import axios from "axios";
+import { useEffect } from "react";
 import "./App.css";
+import Subscribed from "./components/Subscribed";
 import useFilters from "./components/Todo/hooks/useFilters";
 import useProducts from "./components/Todo/hooks/useProducts";
 import FormWithLogic from "./components/update-form-logic/FormWithLogic";
+import withSubscription from "./hoc/withSubscription";
 
 function App() {
   const URL = "http://localhost:3004/products";
@@ -10,6 +14,26 @@ function App() {
 
   // const { value, setValue } = useLocalStorage("me", { name: "Amaben" });
   // console.log(value);
+
+  const SubscriptionComponent = withSubscription(
+    Subscribed,
+    "http://localhost:3004/users-db",
+  );
+
+  console.log(SubscriptionComponent);
+
+  const fetchh = async () => {
+    try {
+      const { data } = await axios.get("http://localhost:3004/users-db");
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    fetchh();
+  }, []);
+
   return (
     <div className="App">
       <>
@@ -63,6 +87,7 @@ function App() {
           {/* {value?.name} */}
         </div>
         <FormWithLogic />
+        <SubscriptionComponent />
       </>
     </div>
   );
