@@ -4,7 +4,9 @@ import "./App.css";
 import Subscribed from "./components/Subscribed";
 import useFilters from "./components/Todo/hooks/useFilters";
 import useProducts from "./components/Todo/hooks/useProducts";
+import Form2 from "./components/update-form-logic/Form2";
 import FormWithLogic from "./components/update-form-logic/FormWithLogic";
+import withForm from "./hoc/withForm";
 import withSubscription from "./hoc/withSubscription";
 
 function App() {
@@ -19,6 +21,9 @@ function App() {
     Subscribed,
     "http://localhost:3004/users-db",
   );
+
+  const FormComponent = withForm(Form2, "http://localhost:3004/users");
+  console.log("FC", FormComponent);
 
   console.log(SubscriptionComponent);
 
@@ -88,6 +93,7 @@ function App() {
         </div>
         <FormWithLogic />
         <SubscriptionComponent />
+        <FormComponent />
       </>
     </div>
   );

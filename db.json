@@ -281,6 +281,38 @@
       "mobile": "+34782364823",
       "policy": true,
       "id": "4WPKtyo"
+    },
+    {
+      "id": "7fguyfte51",
+      "email": "demo@acme.ioo",
+      "password": "$2a$10$Pmk32D/fgkig8pU.r1rGrOpYYJSrnqqpLO6dRdo88iYxxIsl1sst",
+      "name": "Ben",
+      "mobile": "+34782364823",
+      "policy": true
+    },
+    {
+      "id": "7fguyfte51ddsdd",
+      "email": "demo@acme.ioo",
+      "password": "$2a$10$Pmk32D/fgkig8pU.r1rGrOpYYJSrnqqpLO6dRdo88iYxxIsl1sst",
+      "name": "Ben",
+      "mobile": "+34782364823",
+      "policy": true
+    },
+    {
+      "id": "7fguyfte51ddsdde",
+      "email": "demo@acme.ioo",
+      "password": "$2a$10$Pmk32D/fgkig8pU.r1rGrOpYYJSrnqqpLO6dRdo88iYxxIsl1sst",
+      "name": "Ben",
+      "mobile": "+34782364823",
+      "policy": true
+    },
+    {
+      "id": "7fguyfte51ddsddes",
+      "email": "demo@acme.ioo",
+      "password": "$2a$10$Pmk32D/fgkig8pU.r1rGrOpYYJSrnqqpLO6dRdo88iYxxIsl1sst",
+      "name": "Ben",
+      "mobile": "+34782364823",
+      "policy": true
     }
   ],
   "users-db": [
