@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useEffect, useRef, useState } from "react";
 
 export default function useHover() {
   const [hovering, setHover] = useState(false);
@@ -10,15 +10,15 @@ export default function useHover() {
   useEffect(() => {
     const node = ref.current;
     if (node) {
-      node.addEventListener('mouseover', handleMouseOver);
-      node.addEventListener('mouseout', handleMouseOut);
+      node.addEventListener("mouseover", handleMouseOver);
+      node.addEventListener("mouseout", handleMouseOut);
 
       return () => {
-        node.removeEventListener('mouseover', handleMouseOver);
-        node.removeEventListener('mouseout', handleMouseOut);
+        node.removeEventListener("mouseover", handleMouseOver);
+        node.removeEventListener("mouseout", handleMouseOut);
       };
     }
-  }, [ref.current]);
+  }, []);
 
   return [ref, hovering];
 }

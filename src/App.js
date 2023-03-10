@@ -8,11 +8,15 @@ import Form2 from "./components/update-form-logic/Form2";
 import FormWithLogic from "./components/update-form-logic/FormWithLogic";
 import withForm from "./hoc/withForm";
 import withSubscription from "./hoc/withSubscription";
+import useFetch from "./hooks/useFetch";
 
 function App() {
   const URL = "http://localhost:3004/products";
   const { products } = useProducts(URL);
   const { handleFilterProductsByShipment, handleFilter } = useFilters();
+
+  const { data } = useFetch("http://localhost:3004/products");
+  console.log("DATA", data);
 
   // const { value, setValue } = useLocalStorage("me", { name: "Amaben" });
   // console.log(value);
