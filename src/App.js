@@ -6,6 +6,7 @@ import useFilters from "./components/Todo/hooks/useFilters";
 import useProducts from "./components/Todo/hooks/useProducts";
 import Form2 from "./components/update-form-logic/Form2";
 import FormWithLogic from "./components/update-form-logic/FormWithLogic";
+import UserCards from "./components/user-cards";
 import withForm from "./hoc/withForm";
 import withSubscription from "./hoc/withSubscription";
 import useFetch from "./hooks/useFetch";
@@ -34,11 +35,12 @@ function App() {
   const fetchh = async () => {
     try {
       const { data } = await axios.get("http://localhost:3004/users-db");
-      console.log(data);
+      console.log("data in fetch", data);
     } catch (error) {
       console.log(error);
     }
   };
+
   useEffect(() => {
     fetchh();
   }, []);
@@ -98,6 +100,7 @@ function App() {
         <FormWithLogic />
         <SubscriptionComponent />
         <FormComponent />
+        <UserCards name="Ben" />
       </>
     </div>
   );

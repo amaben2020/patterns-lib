@@ -342,5 +342,22 @@
         "hasEmailAlerts": true
       }
     }
+  ],
+  "favorites": [
+    {
+      "id": "7fguyfte5",
+      "email": "demo@acme.io",
+      "password": "$2a$10$Pmk32D/fgkig8pU.r1rGrOpYYJSrnqqpLO6dRdo88iYxxIsl1sstC",
+      "name": "Mok Kuh",
+      "mobile": "+34782364823",
+      "policy": true
+    },
+    {
+      "email": "uzochukwubenamara@gmail.com",
+      "name": "Ben Uzochukwu",
+      "mobile": 0,
+      "policy": true,
+      "id": "x36n6kr"
+    }
   ]
 }
