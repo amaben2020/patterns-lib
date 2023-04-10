@@ -22,3 +22,5 @@ export default function Buttons() {
     </div>
   );
 }
+
+// usage: for mutable values, and accessing dom nodes

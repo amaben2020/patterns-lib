@@ -1,9 +1,12 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import Subscribed from "./components/Subscribed";
 import useFilters from "./components/Todo/hooks/useFilters";
 import useProducts from "./components/Todo/hooks/useProducts";
+import StopWatch from "./components/ref/StopWatch";
+import IntersectionObs from "./components/ref/intersection-observer/IntersectionObs";
+import { MyComponent } from "./components/ref/useEffectSkipRender";
 import Form2 from "./components/update-form-logic/Form2";
 import FormWithLogic from "./components/update-form-logic/FormWithLogic";
 import UserCards from "./components/user-cards";
@@ -18,6 +21,18 @@ function App() {
 
   const { data } = useFetch("http://localhost:3004/products");
   console.log("DATA", data);
+
+  const [state, setState] = useState(0);
+
+  const ref = useRef(0);
+
+  const handle = () => {
+    ref.current++;
+    console.log(ref.current);
+  };
+
+  console.log("I rendered!");
+  const updateCount2 = () => setState(state + 1);
 
   // const { value, setValue } = useLocalStorage("me", { name: "Amaben" });
   // console.log(value);
@@ -101,6 +116,19 @@ function App() {
         <SubscriptionComponent />
         <FormComponent />
         <UserCards name="Ben" />
+        <div>
+          <button onClick={handle}>Click me</button>
+          <button onClick={updateCount2}>+</button>
+          State: {state}
+        </div>
+        <div>
+          <StopWatch />
+
+          <MyComponent />
+        </div>
+        <div>
+          <IntersectionObs />
+        </div>
       </>
     </div>
   );

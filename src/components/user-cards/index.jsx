@@ -13,6 +13,7 @@ const UserCards = ({ users, ...rest }) => {
   if (!isDeepEqual(favoritesRef.current, favorites)) {
     favoritesRef.current = favorites;
   }
+
   useEffect(() => {
     (async () => {
       try {
