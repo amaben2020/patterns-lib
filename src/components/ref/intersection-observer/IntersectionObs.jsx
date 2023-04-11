@@ -5,6 +5,8 @@ import "./styles.css";
 const IntersectionObs = () => {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const [isArticleIntersecting, setIsArticleIntersecting] = useState(false);
+  const [isExpandedIntersecting, setIsExpandedIntersecting] = useState(false);
+
   const ref = useRef(null);
   const articleRef = useRef(null);
 
@@ -15,7 +17,7 @@ const IntersectionObs = () => {
         ([entry]) => {
           setIsIntersecting(entry.isIntersecting);
         },
-        { rootMargin: "-300px" },
+        { rootMargin: "-300px", threshold: [0, 0.25, 0.5, 0.75, 1] },
       );
 
       observer.observe(ref.current);
@@ -58,6 +60,47 @@ const IntersectionObs = () => {
     }
   }, [isArticleIntersecting]);
 
+  const expandRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        console.log(entry);
+        setIsExpandedIntersecting(entry.isIntersecting);
+      },
+      {
+        rootMargin: "-300px",
+      },
+    );
+
+    observer.observe(expandRef?.current);
+  }, []);
+
+  useEffect(() => {
+    if (isExpandedIntersecting) {
+      expandRef?.current.classList.add("expand-in");
+    } else {
+      expandRef?.current.classList.remove("expand-in");
+    }
+  }, [isExpandedIntersecting]);
+
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const handleScroll = () => {
+    if (window?.pageYOffset > 3900) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isScrolled) {
+      window.addEventListener("scroll", handleScroll);
+    } else {
+    }
+  }, [isScrolled]);
+
   return (
     <div style={{ border: "1px solid green" }}>
       <main>
@@ -70,6 +113,19 @@ const IntersectionObs = () => {
         <h2 ref={articleRef} className="title">
           AMABEN
         </h2>
+
+        <div
+          className="expand"
+          ref={expandRef}
+          style={{
+            width: 400,
+          }}
+        >
+          <div>One</div>
+          <div>Two</div>
+        </div>
+
+        <div>Page Yoffset --- {window.pageYOffset}</div>
 
         <footer>This is the Footer</footer>
       </main>
