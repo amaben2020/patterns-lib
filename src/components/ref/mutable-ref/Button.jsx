@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-
+import "./style.css";
 export default function Buttons() {
   const [count, setCount] = useState(0);
   const countRef = useRef(100);
@@ -17,8 +17,12 @@ export default function Buttons() {
 
   return (
     <div>
-      <button onClick={incrementCount}>useState - {count}</button>
-      <button onClick={decrementCount}>useRef - {countRef.current}</button>
+      <button className="button" onClick={incrementCount}>
+        useState - {count}
+      </button>
+      <button className="button" onClick={decrementCount}>
+        useRef - {countRef.current}
+      </button>
     </div>
   );
 }

@@ -5,6 +5,7 @@ import Subscribed from "./components/Subscribed";
 import useFilters from "./components/Todo/hooks/useFilters";
 import useProducts from "./components/Todo/hooks/useProducts";
 import StopWatch from "./components/ref/StopWatch";
+import ClickOutside from "./components/ref/click-outside/ClickOutside";
 import IntersectionObs from "./components/ref/intersection-observer/IntersectionObs";
 import { MyComponent } from "./components/ref/useEffectSkipRender";
 import Form2 from "./components/update-form-logic/Form2";
@@ -128,6 +129,9 @@ function App() {
         </div>
         <div>
           <IntersectionObs />
+        </div>
+        <div>
+          <ClickOutside />
         </div>
       </>
     </div>
