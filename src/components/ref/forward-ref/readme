@@ -1,0 +1,11 @@
+https://www.carlrippon.com/react-forwardref-typescript/
+
+https://dmitripavlutin.com/react-forwardref/
+
+What are forwardRefs? How to Pass Refs to Child Components. This process is the short-form for Forwarding Ref (reference) where the Child component is receiving the forwarded ref.
+
+Child component: any component that's invoked inside another component.
+
+But what if you need to access a DOM element of a child component? Then a simple ref is not enough and you have to combine refs with React.forwardRef(): a technique called refs forwarding.
+
+React also throws a useful warning: Warning: Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?

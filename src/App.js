@@ -6,6 +6,8 @@ import useFilters from "./components/Todo/hooks/useFilters";
 import useProducts from "./components/Todo/hooks/useProducts";
 import StopWatch from "./components/ref/StopWatch";
 import ClickOutside from "./components/ref/click-outside/ClickOutside";
+import { ForwardRef } from "./components/ref/forward-ref";
+import ForwardRef2 from "./components/ref/forward-ref/2";
 import IntersectionObs from "./components/ref/intersection-observer/IntersectionObs";
 import { MyComponent } from "./components/ref/useEffectSkipRender";
 import Form2 from "./components/update-form-logic/Form2";
@@ -59,6 +61,20 @@ function App() {
 
   useEffect(() => {
     fetchh();
+  }, []);
+
+  const [data2, setData] = useState([]);
+
+  const fetchData = async () => {
+    const { data } = await axios.get(
+      "https://jsonplaceholder.typicode.com/todos?_limit=10",
+    );
+
+    setData(data);
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
 
   return (
@@ -132,6 +148,15 @@ function App() {
         </div>
         <div>
           <ClickOutside />
+        </div>
+        {/* <div>
+          Scroll:
+          <InfiniteScrollComponent data={data2} />
+        </div> */}
+        <div>
+          ForwardRef
+          <ForwardRef />
+          <ForwardRef2 />
         </div>
       </>
     </div>
