@@ -65,8 +65,11 @@ const IntersectionObs = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
+        console.log("Entry", entry);
         console.log(entry);
         setIsExpandedIntersecting(entry.isIntersecting);
+
+        // entry.isIntersecting && alert(entry.isIntersecting);
       },
       {
         rootMargin: "-300px",
@@ -94,12 +97,12 @@ const IntersectionObs = () => {
     }
   };
 
-  useEffect(() => {
-    if (isScrolled) {
-      window.addEventListener("scroll", handleScroll);
-    } else {
-    }
-  }, [isScrolled]);
+  // useEffect(() => {
+  //   if (isScrolled) {
+  //     window.addEventListener("scroll", handleScroll);
+  //   } else {
+  //   }
+  // }, [isScrolled]);
 
   return (
     <div style={{ border: "1px solid green" }}>

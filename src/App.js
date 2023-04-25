@@ -16,6 +16,7 @@ import UserCards from "./components/user-cards";
 import withForm from "./hoc/withForm";
 import withSubscription from "./hoc/withSubscription";
 import useFetch from "./hooks/useFetch";
+import useMediaQuery from "./hooks/useMediaQuery";
 
 function App() {
   const URL = "http://localhost:3004/products";
@@ -24,6 +25,9 @@ function App() {
 
   const { data } = useFetch("http://localhost:3004/products");
   console.log("DATA", data);
+
+  const matches = useMediaQuery("(max-width: 600px)");
+  console.log("MATCHES", matches);
 
   const [state, setState] = useState(0);
 
@@ -58,10 +62,6 @@ function App() {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    fetchh();
-  }, []);
 
   const [data2, setData] = useState([]);
 
@@ -157,6 +157,17 @@ function App() {
           ForwardRef
           <ForwardRef />
           <ForwardRef2 />
+        </div>
+        <div
+          style={{
+            background: matches ? "red" : "black",
+            width: 200,
+            height: 100,
+            textAlign: "center",
+            color: matches ? "black" : "white",
+          }}
+        >
+          600PX
         </div>
       </>
     </div>

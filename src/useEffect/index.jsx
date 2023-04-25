@@ -1,4 +1,6 @@
 import React from "react";
+// React.useEffect is a built-in hook that allows you to run some custom code after React renders (and re-renders) your component to the DOM. It accepts a callback function which React will call after the DOM has been updated:
+
 //https://epicreact.dev/myths-about-useeffect/
 function DogInfo({ dogId }) {
   const [dog, setDog] = React.useState(null);
