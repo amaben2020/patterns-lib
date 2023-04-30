@@ -11,10 +11,21 @@ const IntersectionObs = () => {
   const articleRef = useRef(null);
 
   useEffect(() => {
+    const showStuff = setTimeout(() => {
+      alert("Show after duration");
+    }, 3000);
+
+    return () => {
+      clearTimeout(showStuff);
+    };
+  }, []);
+
+  useEffect(() => {
     let observer;
     if (ref.current) {
       observer = new IntersectionObserver(
         ([entry]) => {
+          console.log("isIntersecting", entry);
           setIsIntersecting(entry.isIntersecting);
         },
         { rootMargin: "-300px", threshold: [0, 0.25, 0.5, 0.75, 1] },
@@ -65,11 +76,7 @@ const IntersectionObs = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        console.log("Entry", entry);
-        console.log(entry);
         setIsExpandedIntersecting(entry.isIntersecting);
-
-        // entry.isIntersecting && alert(entry.isIntersecting);
       },
       {
         rootMargin: "-300px",
@@ -86,23 +93,6 @@ const IntersectionObs = () => {
       expandRef?.current.classList.remove("expand-in");
     }
   }, [isExpandedIntersecting]);
-
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  const handleScroll = () => {
-    if (window?.pageYOffset > 3900) {
-      setIsScrolled(true);
-    } else {
-      setIsScrolled(false);
-    }
-  };
-
-  // useEffect(() => {
-  //   if (isScrolled) {
-  //     window.addEventListener("scroll", handleScroll);
-  //   } else {
-  //   }
-  // }, [isScrolled]);
 
   return (
     <div style={{ border: "1px solid green" }}>
