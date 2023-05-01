@@ -17,6 +17,7 @@ import withForm from "./hoc/withForm";
 import withSubscription from "./hoc/withSubscription";
 import useFetch from "./hooks/useFetch";
 import useMediaQuery from "./hooks/useMediaQuery";
+import UseEffectComponent from "./useEffect";
 
 function App() {
   const URL = "http://localhost:3004/products";
@@ -158,7 +159,7 @@ function App() {
           <ForwardRef />
           <ForwardRef2 />
         </div>
-        <div
+        {/* <div
           style={{
             background: matches ? "red" : "black",
             width: 200,
@@ -168,6 +169,9 @@ function App() {
           }}
         >
           600PX
+        </div> */}
+        <div>
+          <UseEffectComponent />
         </div>
       </>
     </div>

@@ -11,16 +11,6 @@ const IntersectionObs = () => {
   const articleRef = useRef(null);
 
   useEffect(() => {
-    const showStuff = setTimeout(() => {
-      alert("Show after duration");
-    }, 3000);
-
-    return () => {
-      clearTimeout(showStuff);
-    };
-  }, []);
-
-  useEffect(() => {
     let observer;
     if (ref.current) {
       observer = new IntersectionObserver(
