@@ -19,6 +19,9 @@ import useFetch from "./hooks/useFetch";
 import useMediaQuery from "./hooks/useMediaQuery";
 import UseEffectComponent from "./useEffect";
 
+import { Link, Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import ThirdExample from "./components/ref/forward-ref/3";
+
 function App() {
   const URL = "http://localhost:3004/products";
   const { products } = useProducts(URL);
@@ -174,6 +177,22 @@ function App() {
           <UseEffectComponent />
         </div>
       </>
+
+      <div>
+        <Router>
+          <nav>
+            <ul>
+              <Routes>
+                <Route exact path="/refs" element={<ThirdExample />} />
+              </Routes>
+
+              <li>
+                <Link to="/refs">About</Link>
+              </li>
+            </ul>
+          </nav>
+        </Router>
+      </div>
     </div>
   );
 }
