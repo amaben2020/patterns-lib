@@ -1,4 +1,11 @@
-import React, { forwardRef, useEffect, useRef } from "react";
+import axios from "axios";
+import React, {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 const ThirdExample = () => {
   const ref = useRef(null);
@@ -14,7 +21,21 @@ const ThirdExample = () => {
       node.style.background = "red";
     });
   }, []);
-  return <Child ref={ref} />;
+  const [p, sP] = useState([]);
+
+  const fetchData = useCallback(async () => {
+    try {
+      const { data } = await axios.get("http://localhost:3004/products");
+
+      sP(data);
+    } catch (error) {}
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  return <Child products={p} ref={ref} />;
 };
 
 const Child = forwardRef((props, ref) => {
