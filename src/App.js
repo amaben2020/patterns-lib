@@ -20,7 +20,11 @@ import useMediaQuery from "./hooks/useMediaQuery";
 import UseEffectComponent from "./useEffect";
 
 import { Link, Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import DIP from "./SOLID/DIP";
+import Layout from "./children";
+import Card from "./children/card";
 import ThirdExample from "./components/ref/forward-ref/3";
+import Map from "./dsa/map";
 
 function App() {
   const URL = "http://localhost:3004/products";
@@ -85,6 +89,7 @@ function App() {
     <div className="App">
       <>
         OK
+        <DIP />
         {/* <DogImages />
         <User name="Amala" />
         <Input
@@ -176,6 +181,9 @@ function App() {
         <div>
           <UseEffectComponent />
         </div>
+        <div>
+          <Map />
+        </div>
       </>
 
       <div>
@@ -193,6 +201,10 @@ function App() {
           </nav>
         </Router>
       </div>
+
+      <Layout>
+        <Card />
+      </Layout>
     </div>
   );
 }
