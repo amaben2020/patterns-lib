@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Search = ({ value, onChange, variant }) => {
   return (
@@ -88,6 +88,23 @@ export const LSP2 = () => {
   };
   const [searchKey, setSearchKey] = useState(INITIAL_STATE);
 
+  const [play, setPlay] = useState({ player: "Ben" });
+
+  const updateState = (p) => {
+    console.log("prev", p);
+    return {
+      ...p,
+      player: p.player === "Ben" ? "Amaben" : "Ben",
+      p2: "Nothing here",
+    };
+  };
+
+  useEffect(() => {
+    setPlay(updateState);
+  }, []);
+
+  console.log("play", play);
+
   const handleChange = (e) => {
     const values = e.target.name;
 
@@ -97,5 +114,23 @@ export const LSP2 = () => {
     }));
   };
 
-  return <Search value={searchKey} onChange={handleChange} variant={2} />;
+  return (
+    <>
+      {["Ben", "Amaben"].map((elem) => (
+        <>
+          <button
+            onClick={() =>
+              setPlay({
+                player: elem,
+              })
+            }
+          >
+            Change Name {play.player}
+          </button>
+        </>
+      ))}
+
+      <Search value={searchKey} onChange={handleChange} variant={2} />
+    </>
+  );
 };
