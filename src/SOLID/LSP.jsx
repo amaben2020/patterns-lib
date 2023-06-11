@@ -1,7 +1,31 @@
 import React, { useState } from "react";
 
-const Search = ({ value, onChange }) => {
-  return <input type="search" required value={value} onChange={onChange} />;
+const Search = ({ value, onChange, variant }) => {
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
+      <input
+        name="name1"
+        type="search"
+        required
+        value={variant ? value.name1 : value}
+        onChange={onChange}
+      />
+      {variant > 1 && (
+        <input
+          name="name2"
+          type="search"
+          required
+          value={variant ? value.name2 : value}
+          onChange={onChange}
+        />
+      )}
+    </div>
+  );
 };
 
 const LSP = () => {
@@ -10,6 +34,7 @@ const LSP = () => {
   const handleChange = (e) => {
     setValue(e.target.value);
   };
+
   return <Search value={value} onChange={handleChange} />;
 };
 
@@ -56,10 +81,21 @@ const Switch = () => {
   );
 };
 
-const LSP2 = () => {
-  const [searchKey, setSearchKey] = useState("");
+export const LSP2 = () => {
+  const INITIAL_STATE = {
+    name1: "",
+    name2: "",
+  };
+  const [searchKey, setSearchKey] = useState(INITIAL_STATE);
 
-  const handleSearch = (e) => setSearchKey(e.target.value);
+  const handleChange = (e) => {
+    const values = e.target.name;
 
-  return <Search value={searchKey} onChange={handleSearch} />;
+    setSearchKey((prev) => ({
+      ...prev,
+      [values]: e.target.value,
+    }));
+  };
+
+  return <Search value={searchKey} onChange={handleChange} variant={2} />;
 };

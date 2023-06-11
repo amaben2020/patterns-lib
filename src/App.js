@@ -25,6 +25,7 @@ import Layout from "./children";
 import Card from "./children/card";
 import ThirdExample from "./components/ref/forward-ref/3";
 import Map from "./dsa/map";
+import { LSP2 } from "./SOLID/LSP";
 
 function App() {
   const URL = "http://localhost:3004/products";
@@ -89,7 +90,8 @@ function App() {
     <div className="App">
       <>
         OK
-        <DIP />
+        {/* <DIP /> */}
+        <LSP2 />
         {/* <DogImages />
         <User name="Amala" />
         <Input

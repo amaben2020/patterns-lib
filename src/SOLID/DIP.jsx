@@ -31,7 +31,6 @@ const DIP = () => {
         email,
         password,
       });
-      console.log(data);
 
       if (data.status === 201) {
         setTimeout(() => {
