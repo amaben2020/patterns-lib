@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 const Search = ({ value, onChange, variant }) => {
   return (
@@ -87,17 +87,26 @@ export const LSP2 = () => {
     name2: "",
   };
   const [searchKey, setSearchKey] = useState(INITIAL_STATE);
+  const [isOpen, setIsOpen] = useState(false);
+  const [active, setIsActive] = useState(null);
 
   const [play, setPlay] = useState({ player: "Ben" });
 
   const updateState = (p) => {
-    console.log("prev", p);
     return {
       ...p,
       player: p.player === "Ben" ? "Amaben" : "Ben",
       p2: "Nothing here",
     };
   };
+
+  const URL = "4ecmgxzn";
+
+  React.useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://paperform.co/__embed.min.js";
+    document.body.appendChild(script);
+  }, []);
 
   useEffect(() => {
     setPlay(updateState);
@@ -113,7 +122,15 @@ export const LSP2 = () => {
       [values]: e.target.value,
     }));
   };
+  const handleOpen = (idx) => {
+    setIsActive(idx);
+  };
 
+  const links = [
+    { title: "Home", url: "/" },
+
+    { title: "Signin", url: "/signin" },
+  ];
   return (
     <>
       {["Ben", "Amaben"].map((elem) => (
@@ -129,6 +146,29 @@ export const LSP2 = () => {
           </button>
         </>
       ))}
+
+      <div data-paperform-id={URL} />
+
+      {/* <div
+        style={{
+          display: "flex",
+        }}
+      >
+        {links.map((l, _) => (
+          <>
+            <p
+              onClick={() => {
+                handleOpen(l);
+                setIsOpen((i) => !i);
+              }}
+            >
+              {l.title}
+            </p>
+
+            {active.title === l.title && isOpen && <>{l.url}</>}
+          </>
+        ))}
+      </div> */}
 
       <Search value={searchKey} onChange={handleChange} variant={2} />
     </>

@@ -1,1 +1,7 @@
 https://betterprogramming.pub/applying-the-open-closed-principle-to-write-clean-react-components-4e4514963e40
+
+https://www.linkedin.com/pulse/solid-principles-reactjs-oleksii-bortnytskyi/
+
+Liskov Subtitution pattern:
+State is not managed by child component
+Event handlers are passed down externally
