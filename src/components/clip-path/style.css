@@ -1,0 +1,4 @@
+.clipper {
+  /* clip-path: url("./../../asset/shape.svg"); */
+  mask-image: url(https://mdn.mozillademos.org/files/12676/star.svg);
+}

@@ -18,9 +18,9 @@ import withSubscription from "./hoc/withSubscription";
 import useFetch from "./hooks/useFetch";
 import useMediaQuery from "./hooks/useMediaQuery";
 import UseEffectComponent from "./useEffect";
-
+import ClipPath from "./components/clip-path/index.jsx";
 import { Link, Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import DIP from "./SOLID/DIP";
+// import DIP from "./SOLID/DIP";
 import Layout from "./children";
 import Card from "./children/card";
 import ThirdExample from "./components/ref/forward-ref/3";
@@ -89,7 +89,7 @@ function App() {
   return (
     <div className="App">
       <>
-        OK
+        <ClipPath />
         {/* <DIP /> */}
         <LSP2 />
         {/* <DogImages />
