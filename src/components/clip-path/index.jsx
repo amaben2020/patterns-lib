@@ -15,35 +15,35 @@ const ClipPath = () => {
   const [loading, setLoading] = useState(false);
   const LIMIT = 5;
 
-  useEffect(() => {
-    const handleBackendFetch = async () => {
-      setLoading(true);
-      try {
-        const { data } = await axios.get(
-          `http://localhost:5001/blog?page=${page}&limit=${LIMIT}`,
-        );
+  // useEffect(() => {
+  //   const handleBackendFetch = async () => {
+  //     setLoading(true);
+  //     try {
+  //       const { data } = await axios.get(
+  //         `http://localhost:5001/blog?page=${page}&limit=${LIMIT}`,
+  //       );
 
-        setLoading(false);
-        setBackend(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  //       setLoading(false);
+  //       setBackend(data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
 
-    handleBackendFetch();
-  }, [page]);
+  //   handleBackendFetch();
+  // }, [page]);
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const { data } = await axios.get(`http://localhost:5001/blog`);
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const { data } = await axios.get(`http://localhost:5001/blog`);
 
-        setTotalPages(data.length);
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  }, []);
+  //       setTotalPages(data.length);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   })();
+  // }, []);
 
   const pageCount = Math.ceil(totalPages / LIMIT);
 
@@ -178,7 +178,7 @@ const ClipPath = () => {
           justifyContent: "center",
         }}
       >
-        {Array.from(Array(pageCount).keys()).map((elem) => (
+        {/* {Array.from(Array(pageCount).keys()).map((elem) => (
           <div
             style={{
               margin: 10,
@@ -196,7 +196,7 @@ const ClipPath = () => {
               </button>
             }
           </div>
-        ))}
+        ))} */}
       </div>
     </>
   );

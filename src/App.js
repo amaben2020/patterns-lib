@@ -26,6 +26,7 @@ import Card from "./children/card";
 import ThirdExample from "./components/ref/forward-ref/3";
 import Map from "./dsa/map";
 import { LSP2 } from "./SOLID/LSP";
+import Authentication from "./components/auth";
 
 function App() {
   const URL = "http://localhost:3004/products";
@@ -89,9 +90,10 @@ function App() {
   return (
     <div className="App">
       <>
-        <ClipPath />
+        <Authentication />
+        {/* <ClipPath /> */}
         {/* <DIP /> */}
-        <LSP2 />
+        {/* <LSP2 /> */}
         {/* <DogImages />
         <User name="Amala" />
         <Input
@@ -140,10 +142,10 @@ function App() {
           </button> */}
           {/* {value?.name} */}
         </div>
-        <FormWithLogic />
+        {/* <FormWithLogic />
         <SubscriptionComponent />
         <FormComponent />
-        <UserCards name="Ben" />
+        <UserCards name="Ben" /> */}
         <div>
           <button onClick={handle}>Click me</button>
           <button onClick={updateCount2}>+</button>
