@@ -1,43 +1,38 @@
-import React, { useState } from 'react';
-
-const INITIAL_STATE = {
-  email: '',
-  password: '',
-};
+import React, { useState } from "react";
 
 const Form = ({ onSubmit }) => {
-  const [userData, setUserData] = useState(INITIAL_STATE);
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
 
-  const handleChange = (e) => {
-    const values = e.target.name;
-
-    setUserData((prev) => ({
-      ...prev,
-      [values]: e.target.value,
-    }));
+  const handleOnChange = (e) => {
+    setUserData((p) => {
+      return {
+        ...p,
+        [e.target.id]: e.target.value,
+      };
+    });
   };
 
   const { email, password } = userData;
-
-  const onSubmitHandler = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ email });
+    onSubmit(email, password);
   };
-
   return (
-    <form onSubmit={onSubmitHandler}>
-      <input type='email' value={email} onChange={handleChange} name='email' />
-      <label htmlFor=''>
-        {email} : {password}
-      </label>
+    <form onSubmit={handleSubmit}>
+      Form
+      <label htmlFor="email">Email</label>
+      <input value={email} onChange={handleOnChange} type="text" id="email" />
+      <label htmlFor="password">Password</label>
       <input
-        type='password'
         value={password}
-        name='password'
-        onChange={handleChange}
+        onChange={handleOnChange}
+        type="text"
+        id="password"
       />
-
-      <button type='submit'>Submit</button>
+      <button type="submit">Submit</button>
     </form>
   );
 };

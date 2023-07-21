@@ -1,28 +1,29 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React from "react";
+import Form from "../components/form";
 
-const Form = ({ onSubmit, mode }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+// const Form = ({ onSubmit, mode }) => {
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
 
-  const renderTextBasedOnMode = () =>
-    mode === "login" ? <p>Login</p> : <p>Logout</p>;
+//   const renderTextBasedOnMode = () =>
+//     mode === "login" ? <p>Login</p> : <p>Logout</p>;
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    onSubmit(email, password);
-  };
+//   const submitHandler = (e) => {
+//     e.preventDefault();
+//     onSubmit(email, password);
+//   };
 
-  return (
-    <form onSubmit={submitHandler}>
-      {renderTextBasedOnMode()}
-      <input type="email" onChange={(e) => setEmail(e.target.value)} />
-      <input type="password" onChange={(e) => setPassword(e.target.value)} />
+//   return (
+//     <form onSubmit={submitHandler}>
+//       {renderTextBasedOnMode()}
+//       <input type="email" onChange={(e) => setEmail(e.target.value)} />
+//       <input type="password" onChange={(e) => setPassword(e.target.value)} />
 
-      <button type="submit">Submit</button>
-    </form>
-  );
-};
+//       <button type="submit">Submit</button>
+//     </form>
+//   );
+// };
 
 const DIP = () => {
   const handleSubmit = async (email, password) => {
@@ -41,7 +42,12 @@ const DIP = () => {
       console.log(error?.message);
     }
   };
-  return <Form onSubmit={handleSubmit} mode="login" />;
+  return (
+    <>
+      {/* <Form onSubmit={handleSubmit} mode="login" /> */}
+      <Form onSubmit={handleSubmit} />
+    </>
+  );
 };
 
 export default DIP;

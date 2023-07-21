@@ -1,32 +1,28 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
+import { Link, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
+import DIP from "./SOLID/DIP";
+import Layout from "./children";
+import Card from "./children/card";
 import Subscribed from "./components/Subscribed";
 import useFilters from "./components/Todo/hooks/useFilters";
 import useProducts from "./components/Todo/hooks/useProducts";
+import CompositionPattern from "./components/architecture/CompositionPattern";
 import StopWatch from "./components/ref/StopWatch";
 import ClickOutside from "./components/ref/click-outside/ClickOutside";
 import { ForwardRef } from "./components/ref/forward-ref";
 import ForwardRef2 from "./components/ref/forward-ref/2";
+import ThirdExample from "./components/ref/forward-ref/3";
 import IntersectionObs from "./components/ref/intersection-observer/IntersectionObs";
 import { MyComponent } from "./components/ref/useEffectSkipRender";
 import Form2 from "./components/update-form-logic/Form2";
-import FormWithLogic from "./components/update-form-logic/FormWithLogic";
-import UserCards from "./components/user-cards";
+import Map from "./dsa/map";
 import withForm from "./hoc/withForm";
 import withSubscription from "./hoc/withSubscription";
 import useFetch from "./hooks/useFetch";
 import useMediaQuery from "./hooks/useMediaQuery";
 import UseEffectComponent from "./useEffect";
-import ClipPath from "./components/clip-path/index.jsx";
-import { Link, Route, BrowserRouter as Router, Routes } from "react-router-dom";
-// import DIP from "./SOLID/DIP";
-import Layout from "./children";
-import Card from "./children/card";
-import ThirdExample from "./components/ref/forward-ref/3";
-import Map from "./dsa/map";
-import { LSP2 } from "./SOLID/LSP";
-import Authentication from "./components/auth";
 
 function App() {
   const URL = "http://localhost:3004/products";
@@ -90,9 +86,10 @@ function App() {
   return (
     <div className="App">
       <>
-        <Authentication />
+        <CompositionPattern />
+        {/* <Authentication /> */}
         {/* <ClipPath /> */}
-        {/* <DIP /> */}
+        <DIP />
         {/* <LSP2 /> */}
         {/* <DogImages />
         <User name="Amala" />
