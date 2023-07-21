@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import Form from "../components/form";
+// import ConnectedForm from "../components/form";
 
 // const Form = ({ onSubmit, mode }) => {
 //   const [email, setEmail] = useState("");
@@ -45,7 +45,7 @@ const DIP = () => {
   return (
     <>
       {/* <Form onSubmit={handleSubmit} mode="login" /> */}
-      <Form onSubmit={handleSubmit} />
+      {/* <ConnectedForm onSubmit={handleSubmit} /> */}
     </>
   );
 };

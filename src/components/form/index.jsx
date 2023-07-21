@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Form = ({ onSubmit }) => {
+const ConnectedForm = ({ onSubmit }) => {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -37,4 +37,4 @@ const Form = ({ onSubmit }) => {
   );
 };
 
-export default Form;
+export default ConnectedForm;
