@@ -15,9 +15,9 @@ import ForwardRef2 from "./components/ref/forward-ref/2";
 import ThirdExample from "./components/ref/forward-ref/3";
 import IntersectionObs from "./components/ref/intersection-observer/IntersectionObs";
 import { MyComponent } from "./components/ref/useEffectSkipRender";
-import VanillaTiltComponent from "./components/ref/vanilla-tilt/index.tsx";
 import Switch, { switchData } from "./components/switch";
 import Form2 from "./components/update-form-logic/Form2";
+import OnMount from "./components/useEffect/OnMount";
 import Map from "./dsa/map";
 import withForm from "./hoc/withForm";
 import withSubscription from "./hoc/withSubscription";
@@ -89,7 +89,9 @@ function App() {
   return (
     <div className="App">
       <>
-        <VanillaTiltComponent />
+        <OnMount />
+        {/* <StateChange /> */}
+        {/* <VanillaTiltComponent /> */}
         {/* <Timer /> */}
         <Switch data={switchData} callback={setSwitch} value={switchh} />
         {/* <CompositionPattern /> */}
