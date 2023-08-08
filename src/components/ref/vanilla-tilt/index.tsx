@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import VanillaTilt from "vanilla-tilt";
+//@ts-expect-error
 import { usePrevious } from "./usePrevious.ts";
 const VanillaTiltComponent = () => {
   const vanillaRef = useRef(null);
@@ -11,7 +12,7 @@ const VanillaTiltComponent = () => {
 
   useEffect(() => {
     if (vanillaRef?.current) {
-      const element = vanillaRef?.current;
+      const element = vanillaRef?.current as HTMLElement;
       VanillaTilt.init(element, {
         glare: true,
         speed: 9,
@@ -29,7 +30,8 @@ const VanillaTiltComponent = () => {
     return () => {
       // Destroy instance
       if (vanillaRef?.current) {
-        vanillaRef?.current.vanillaTilt.destroy();
+        const element = vanillaRef?.current as HTMLDivElement | null | any;
+        element.vanillaTilt.destroy();
       }
     };
   }, [setCount, hasDomMounted]);
