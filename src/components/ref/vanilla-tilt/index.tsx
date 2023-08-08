@@ -6,12 +6,13 @@ const VanillaTiltComponent = () => {
   useEffect(() => {
     if (vanillaRef?.current) {
       const element = vanillaRef?.current;
-      VanillaTilt.init(element);
+      VanillaTilt.init(element, {
+        glare: true,
+        speed: 9,
+      });
       element?.addEventListener("tiltChange", () => {
         element.style.backgroundColor = "blue";
         element.style.color = "white";
-        element.setAttribute("data-tilt-glare", "data-tilt-glare");
-        element.setAttribute("data-tilt-max-glare", 0.8);
       });
     }
 
