@@ -32,15 +32,23 @@ const Switch = ({ data, callback, value }) => {
       >
         {data.map((elem) => {
           return (
-            <div>
+            <div key={elem.label}>
               <button
+                aria-label="button"
                 style={{
                   background: elem.label === value ? "red" : "blue",
                   color: elem.label === value ? "white" : "black",
                   width: 200,
                   padding: 20,
+                  cursor: "pointer",
                 }}
-                onClick={() => elem.handleSwitch(elem.label, callback)}
+                // https://upmostly.com/tutorials/react-onclick-event-handling-with-examples
+                onClick={() => {
+                  elem.handleSwitch(elem.label, callback);
+                  setTimeout(() => {
+                    alert("OK");
+                  }, 1000);
+                }}
               >
                 {elem.label}
               </button>
@@ -54,3 +62,13 @@ const Switch = ({ data, callback, value }) => {
 };
 
 export default Switch;
+
+// query MyQuery {
+//   allStoryblokEntry(filter: {field_gr_is_current_funded_boolean: {nin: true}}) {
+//     nodes {
+//      content
+//         id
+//         full_slug
+//     }
+//   }
+// }

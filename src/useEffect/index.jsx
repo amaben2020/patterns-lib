@@ -19,6 +19,22 @@ const UseEffectComponent = () => {
   const [products, setProducts] = useState({});
   const [loading, setLoading] = useState(false);
 
+  // const [data, setData] = useState([]);
+
+  // const url = "desserts";
+
+  // useEffect(() => {
+  //   if (url.includes("dessert")) {
+  //     setData(["yup"]);
+  //   } else {
+  //     setData(["Nope"]);
+  //   }
+
+  //   return () => {
+  //     setData([]);
+  //   };
+  // }, []);
+
   console.log("Ran before all effects");
   // UseEffect gets queued up and jsx is slightly rendered after paint
   useEffect(() => {
@@ -76,6 +92,10 @@ const UseEffectComponent = () => {
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       {loading && <div style={{ fontSize: 50 }}>LOADING.....</div>}
+
+      {/* {data?.map((e) => (
+        <>{e}</>
+      ))} */}
       <div>
         {posts.slice(0, 4)?.map((p) => (
           <div

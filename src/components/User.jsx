@@ -1,5 +1,5 @@
-import React from 'react';
-import withUser from '../hoc/withUser';
+import React from "react";
+import withUser from "../hoc/withUser";
 
 const User = ({ users, name }) => {
   console.log(users);
@@ -8,7 +8,7 @@ const User = ({ users, name }) => {
       {name}
       {users.filter(Boolean).map((user, index) => (
         <h1>
-          {' '}
+          {" "}
           {index + 1} - {user.name}
         </h1>
       ))}

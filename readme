@@ -6,3 +6,83 @@ Custom Hooks
 Asynchronousity
 Redux
 Context
+
+https://www.freecodecamp.org/news/react-accessibility-tools-build-accessible-react-apps/
+
+import classNames from "classnames";
+import NextLink from "next/link";
+import { useRouter } from "next/router";
+import { FC, KeyboardEvent } from "react";
+
+import { useSegment } from "@/base/app/hooks/use-segment";
+import { isExternalLink, isUtilityLink } from "@/base/app/utils/link";
+
+import styles from "./styles.module.css";
+import { LinkProps } from "./types";
+
+export const Link: FC<LinkProps> = ({ children, className, to, query = {}, tracking, onClick, ...rest }) => {
+const { track } = useSegment();
+const router = useRouter();
+
+const href = to || "/";
+
+const props = {
+className: classNames(styles.link, className),
+href,
+...rest,
+};
+
+function handleKeyDown(event: KeyboardEvent<HTMLAnchorElement>) {
+if (event.keyCode === 13) {
+handleClick();
+}
+}
+
+const handleClick = async () => {
+if (!!tracking?.event) {
+await track(tracking);
+}
+
+    if (typeof onClick === "function") {
+      await onClick();
+    }
+
+};
+
+if (isExternalLink(href)) {
+return (
+<a
+target="\_blank"
+rel="noopener noreferrer"
+{...props}
+onClick={handleClick}
+role="button"
+tabIndex={0}
+onKeyDown={handleKeyDown} >
+{children}
+</a>
+);
+}
+
+if (isUtilityLink(href)) {
+return (
+<a target="\_self" {...props} onClick={handleClick} role="button" tabIndex={0} onKeyDown={handleKeyDown}>
+{children}
+</a>
+);
+}
+
+// persist query params
+const queryMap = new Map(Object.entries({ ...router.query, ...query }));
+if (queryMap.has("slug")) {
+queryMap.delete("slug");
+}
+
+return (
+<NextLink href={{ pathname: href, query: Object.fromEntries(queryMap) }} legacyBehavior>
+<a {...props} onClick={handleClick} role="button" tabIndex={0} onKeyDown={handleKeyDown}>
+{children}
+</a>
+</NextLink>
+);
+};
