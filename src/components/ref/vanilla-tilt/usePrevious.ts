@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
-type TUsePrev = [number, React.Dispatch<React.SetStateAction<number>>];
-export const usePrevious = (): TUsePrev => {
-  const [count, setCount] = useState(0);
+type TUsePrev = [number];
+export const usePrevious = (count): TUsePrev => {
 
   const prevCountRef = useRef(0);
   useEffect(() => {
@@ -13,5 +12,5 @@ export const usePrevious = (): TUsePrev => {
     };
   }, [count]);
 
-  return [prevCountRef.current, setCount];
+  return [prevCountRef.current];
 };

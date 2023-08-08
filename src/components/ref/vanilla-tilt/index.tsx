@@ -4,7 +4,9 @@ import VanillaTilt from "vanilla-tilt";
 import { usePrevious } from "./usePrevious.ts";
 const VanillaTiltComponent = () => {
   const vanillaRef = useRef(null);
-  const [count, setCount] = usePrevious();
+  const [count, setCount] = useState(0);
+
+  const [previousCount] = usePrevious(count);
   const [hasDomMounted, setHasDomMounted] = useState(false);
   useEffect(() => {
     if (!hasDomMounted) setHasDomMounted(true);
@@ -47,7 +49,7 @@ const VanillaTiltComponent = () => {
         cursor: "pointer",
       }}
     >
-      Logo {count}
+      Logo {previousCount}
     </div>
   );
 };
