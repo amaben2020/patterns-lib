@@ -9,15 +9,14 @@ import Subscribed from "./components/Subscribed";
 import useFilters from "./components/Todo/hooks/useFilters";
 import useProducts from "./components/Todo/hooks/useProducts";
 import StopWatch from "./components/ref/StopWatch";
-import ClickOutside from "./components/ref/click-outside/ClickOutside";
 import { ForwardRef } from "./components/ref/forward-ref";
 import ForwardRef2 from "./components/ref/forward-ref/2";
 import ThirdExample from "./components/ref/forward-ref/3";
 import IntersectionObs from "./components/ref/intersection-observer/IntersectionObs";
 import { MyComponent } from "./components/ref/useEffectSkipRender";
 import Switch, { switchData } from "./components/switch";
+import DisplayData from "./components/testing-time/hoc/DisplayData";
 import Form2 from "./components/update-form-logic/Form2";
-import OnMount from "./components/useEffect/OnMount";
 import Map from "./dsa/map";
 import withForm from "./hoc/withForm";
 import withSubscription from "./hoc/withSubscription";
@@ -86,10 +85,14 @@ function App() {
 
   const [switchh, setSwitch] = useState(switchData[0].label);
 
+  const HOCComp = DisplayData({ url: "https://amaben.com" });
+
   return (
     <div className="App">
       <>
-        <OnMount />
+        {HOCComp}
+
+        {/* <OnMount /> */}
         {/* <StateChange /> */}
         {/* <VanillaTiltComponent /> */}
         {/* <Timer /> */}
@@ -164,9 +167,9 @@ function App() {
         <div>
           <IntersectionObs />
         </div>
-        <div>
+        {/* <div>
           <ClickOutside />
-        </div>
+        </div> */}
         {/* <div>
           Scroll:
           <InfiniteScrollComponent data={data2} />
