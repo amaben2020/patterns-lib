@@ -1,6 +1,6 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import Skeleton from '../components/card/skeleton';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import Skeleton from "../components/card/skeleton";
 
 const withSkeleton = (Component, url) => {
   return (props) => {

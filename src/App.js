@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import DIP from "./SOLID/DIP";
@@ -15,7 +15,9 @@ import ThirdExample from "./components/ref/forward-ref/3";
 import IntersectionObs from "./components/ref/intersection-observer/IntersectionObs";
 import { MyComponent } from "./components/ref/useEffectSkipRender";
 import Switch, { switchData } from "./components/switch";
-import DisplayData from "./components/testing-time/hoc/DisplayData";
+import ChildrenComponent, {
+  WrappedComponent,
+} from "./components/testing-time/children/index.tsx";
 import Form2 from "./components/update-form-logic/Form2";
 import Map from "./dsa/map";
 import withForm from "./hoc/withForm";
@@ -85,12 +87,20 @@ function App() {
 
   const [switchh, setSwitch] = useState(switchData[0].label);
 
-  const HOCComp = DisplayData({ url: "https://amaben.com" });
+  // const HOCComp = DisplayData({ url: "https://amaben.com" });
+
+  const logger = useCallback((elem) => {
+    return `Logged from ${console.log(elem)}`;
+  }, []);
 
   return (
     <div className="App">
       <>
-        {HOCComp}
+        <ChildrenComponent logger={logger}>
+          <WrappedComponent />
+          {/* <WrappedComponent /> */}
+        </ChildrenComponent>
+        {/* {HOCComp} */}
 
         {/* <OnMount /> */}
         {/* <StateChange /> */}
